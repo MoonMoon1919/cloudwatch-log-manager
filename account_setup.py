@@ -91,7 +91,7 @@ class LambdaRole(object):
         try:
             create_role = iamClient.create_role(
                                                 Path='/',
-                                                RoleName='cloudwatch-cleanup-lambda-role',
+                                                RoleName='cloudwatch-cleanup-role',
                                                 AssumeRolePolicyDocument=json.dumps(self.role_document),
                                                 Description='IAM role for CloudWatch Cleanup Lambda'
                                             )
@@ -232,6 +232,8 @@ class Lambda(object):
 
 def main():
     LAMBDA_NAME = 'cloudwatch-logs-manager-lambda'
+    RULE_NAME = 'Cloudwatch-Cleanup-Rule'
+    RUN_RATE = '14 days'
 
     """
     Starts us off by zipping the function
@@ -243,13 +245,13 @@ def main():
     role_arn, role_name = role_object.create_role()
     policy_arn = role_object.create_policy()
     attach = role_object.attach_policy(role_name, policy_arn)
-
+    
     #Create the lambda
     lambda_object = Lambda(LAMBDA_NAME, role_arn)
     lambda_arn = lambda_object.create()
 
     #Create the rule
-    event_object = CloudWatchEvent(rule_name='Cloudwatch-Cleanup-Rule', rate='14 days')
+    event_object = CloudWatchEvent(rule_name=RULE_NAME, rate=RUN_RATE)
     event_rule_arn = event_object.create_cloudwatch_rule()
 
     #Policies
