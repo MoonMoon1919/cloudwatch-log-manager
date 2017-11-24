@@ -9,7 +9,7 @@ A simple lambda for ensuring your CloudWatch logs don't get out of control. Beca
 This lambda aims to:  
 - Cleanup your CloudWatch log groups
 - Lower your monthly AWS spend  
-- Automate account maintenance  
+- Automate account maintenance (in regards to your logs)  
 
 ---
 
@@ -19,7 +19,7 @@ The cloud is cheap but that isn't an excuse to blow your yearly budget just to '
 
 Chances are you have a lot of underutilized logs sitting in Cloudwatch, this simple lambda runs on a schedule to ensure all log groups across any specified region in your account adhere to the same expiration policy.  
 
-Without specification, CloudWatch Logs are set to expire after 10 years. If all of your infrastructure is in AWS and you're using CloudWatch Logs heavily (even if it's just a pitstop before you push your logs elsewhere) chances are you're paying quite a bit to store logs you aren't using. Your spend might be low now, but in 3 years you're going to be paying quite a bit just to house logs you don't care about anymore.
+Without specification, CloudWatch Logs are set to expire after 10 years. If all of your infrastructure is in AWS and you're using CloudWatch Logs heavily (even if it's just a pitstop before you push your logs elsewhere) chances are you're paying quite a bit to store logs you aren't using. Your spend might be low now, but in 3 years you're going to be paying quite a bit just to house logs you (probably) don't care about anymore.
 
 ---
 
