@@ -4,8 +4,10 @@ import json
 import os
 import sys
 
-EXPIRATION = 120
-REGIONS = ['us-west-1', 'us-west-2', 'us-east-1', 'us-east-2'] 
+import local_config
+
+EXPIRATION = local_config.EXPIRATION
+REGIONS = local_config.REGIONS 
 
 class RegionGroups(object):
     def __init__(self, region):
