@@ -25,6 +25,14 @@ Without specification, CloudWatch Logs are set to expire after 10 years. If all 
 
 ---
 
+## What?  
+
+Cloudwatch-Log-Manager is a lambda that runs on a schedule. It runs through all of your CloudWatch Log Groups in each specified region and checks to see if each group has the desired expiration age. If the log group already has the expected age, it passes, if not, it sets the desired retention policy on the group.  
+
+The general recommendation is 180 or 365 days. Without updating the generic setting of this lambda is 180 days.
+
+---
+
 ## How?  
 
 Pretty simple. 

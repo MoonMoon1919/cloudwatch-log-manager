@@ -1,4 +1,4 @@
-EXPIRATION = 120
+EXPIRATION = 180
 REGIONS = ['us-west-1', 'us-west-2', 'us-east-1', 'us-east-2'] 
 
 ## Expiration must be one of the following:
