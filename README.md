@@ -11,6 +11,7 @@ This lambda aims to:
 - Lower your monthly AWS spend  
 - Automate account maintenance (in regards to your logs)  
 
+This lambda is written in Python 3  
 ---
 
 ## Why?
