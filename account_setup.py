@@ -42,10 +42,7 @@ role_document= {
 
 def zip_function():
   """
-  Zips up our function and all dependencies to be uploaded to the lambda specified in lambda name
-
-  args:
-    lambda_name: name of the lambda, retrieved from the config file
+  Zips up our function into a package to be uploaded
   """
   output_path = os.getcwd() + '/dist.zip'
   folder_path = os.curdir + '/dist'
