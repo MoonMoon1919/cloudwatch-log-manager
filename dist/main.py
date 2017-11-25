@@ -45,7 +45,7 @@ class RegionGroups(object):
                 group_name = group_info['logGroupName']
 
                 if 'retentionInDays' in group_info and group_info['retentionInDays'] == expiration:
-                    print('Log Group: "%s" passed check' % group_name.split('/')[3])
+                    print('Log Group: "%s" passed check' % group_name)
                 else:
                     groups_to_update.append(group_info['logGroupName'])
             except ClientError as error:
