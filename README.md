@@ -12,6 +12,7 @@ This lambda aims to:
 - Automate account maintenance (in regards to your logs)  
 
 This lambda is written in Python 3  
+
 ---
 
 ## Why?
