@@ -25,9 +25,19 @@ Without specification, CloudWatch Logs are set to expire after 10 years. If all 
 
 ## How 
 
-Pretty simple. The lambda runs on a schedule. I'd recommend once a week or once every two weeks.  
+Pretty simple. 
 
 Setting up is easy just follow these steps:  
-- Add your desired amount of days to store your logs and add the regions you have active logs in to /dist/local_config
-- Run "python account_setup.py"
-- Kick your feet up and worry about one less thing every day (alcoholic beverage optional)
+- Clone this directory  
+- Add your desired amount of days to store your logs and add the regions you have active logs in to /dist/local_config  
+- Run `python account_setup.py` from the directory you cloned this in  
+- Kick your feet up and worry about one less thing (alcoholic beverage optional)  
+
+The file 'account_setup.py' is a setup script that does the following:  
+- Creates a ZIP off the `/dist` directory
+- Creates IAM role for the Lambda  
+- Creates IAM policy for the role  
+- Creates CloudWatch Event that is set to run every 14 days  
+- Creates Lambda with the CloudWatch Event as the trigger  
+
+You can change the frequency of the lambda in the main function of 'account_setup' function.

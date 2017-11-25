@@ -3,6 +3,7 @@ from botocore.exceptions import ClientError
 import json
 import os
 import sys
+import time
 import zipfile
 
 #Sets up our boto3 clients
@@ -206,9 +207,8 @@ class Lambda(object):
         except ClientError as error:
             print(error.response)
         finally:
-            if create_lambda['ResponseMetadata']['HTTPStatusCode'] == 200:
-                print("Lambda created successfully")
-                return create_lambda['FunctionArn']
+            print("Lambda created successfully")
+            return create_lambda['FunctionArn']
 
     def add_invoke_permission(self, source_arn):
         """
@@ -231,6 +231,11 @@ class Lambda(object):
                 return True
 
 def main():
+    """
+    The below variables can be changed to whatever you see fit.
+
+    If you are going to update the run rate it should remain in the format 'X days' or 'X mins'
+    """
     LAMBDA_NAME = 'cloudwatch-logs-manager-lambda'
     RULE_NAME = 'Cloudwatch-Cleanup-Rule'
     RUN_RATE = '14 days'
@@ -246,6 +251,9 @@ def main():
     policy_arn = role_object.create_policy()
     attach = role_object.attach_policy(role_name, policy_arn)
     
+    print("Sleeping for 10 seconds")
+    time.sleep(10)
+
     #Create the lambda
     lambda_object = Lambda(LAMBDA_NAME, role_arn)
     lambda_arn = lambda_object.create()
