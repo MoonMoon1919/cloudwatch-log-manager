@@ -25,7 +25,7 @@ Without specification, CloudWatch Logs are set to expire after 10 years. If all 
 
 ---
 
-## How 
+## How?  
 
 Pretty simple. 
 
